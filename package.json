@@ -1,44 +1,37 @@
 {
-  "name": "@pl/core-sdk",
-  "version": "0.33.0",
+  "name": "@myfile/core-sdk",
+  "version": "0.1.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/index",
   "bin": {
     "generate-oas": "./bin/generate-swagger.js",
-    "sync-dir-to-s3": "./_devops_scripts/deploy-to-s3.sh",
-    "assume-ci-svc-role": "./_devops_scripts/ci-assume-ci-svc-role.sh",
-    "assume-pl-codeartifact-role": "./_devops_scripts/ci-assume-pl-codeartifact-role.sh"
+    "build-and-push-docker-image": "./bash-script-utilities/build-and-push-docker-image.sh",
+    "update-yaml-inplace": "./dist/executables/update-yaml-inplace.js"
   },
-  "types": "dist/index.d.ts",
+  "types": "dist/index",
+  "typings": "dist/index",
   "scripts": {
     "dev": "nodemon -x ts-node src/index.ts",
     "build": "tsc",
-    "pub": "npm version minor && npm run build && npm publish",
+    "pub": "rm -rf ./dist && npm run build && npm publish",
     "test": "jest",
     "generate-swagger": "node -r ts-node/register bin/generate-swagger.js",
     "generate-swagger:break": "node --inspect-brk -r ts-node/register bin/generate-swagger.js",
-    "generate-swagger:debug": "node --inspect -r ts-node/register bin/generate-swagger.js",
-    "npm-login": "aws codeartifact login --tool npm --repository pl-npm --domain pl-npm --domain-owner 135700256913 --namespace @pl --region us-east-1 --profile $PROFILE",
-    "npm-login-with-assumed-role": ". ./_devops_scripts/ci-assume-pl-codeartifact-role.sh",
-    "deploy": "npm run ci-assume-role && . ./_devops_scripts/params.sh && ./_devops_scripts/deploy-to-s3.sh",
-    "ci-assume-role": "ASSUME_ROLE_PROFILE_NAME=onetribe_session_profile PROFILE=onetribe_ci_assume_role . ./_devops_scripts/ci-assume-ci-svc-role.sh"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:productlabllc/pkg-core-app-sdk.git"
+    "generate-swagger:debug": "node --inspect -r ts-node/register bin/generate-swagger.js"
   },
   "keywords": [],
   "author": "",
   "license": "UNLICENSED",
   "devDependencies": {
+    "@types/node": "^20.10.5",
     "esbuild": "^0.12.1",
     "jest": "^26.6.3",
     "lint-staged": "^11.0.0",
     "nodemon": "^2.0.7",
     "prettier": "^2.3.0",
     "ts-jest": "^26.5.6",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.2.4"
+    "ts-node": "^10.9.2",
+    "typescript": "^4.9.5"
   },
   "prettier": {
     "semi": true,
@@ -59,17 +52,22 @@
     "@types/aws-lambda": "^8.10.81",
     "@types/formidable": "^1.2.3",
     "@types/jest": "^26.0.23",
+    "@types/js-yaml": "^4.0.5",
+    "@types/lodash": "^4.14.182",
     "@types/minimist": "^1.2.2",
-    "@types/node": "^15.3.0",
     "@types/node-fetch": "^2.5.12",
     "atob": "^2.1.2",
-    "joi": "^17.12.0",
-    "joi-to-swagger": "^5.2.0",
-    "minimist": "^1.2.5"
+    "axios": "^1.6.3",
+    "joi": "^17.11.0",
+    "joi-to-swagger": "^6.2.0",
+    "joi-to-typescript": "^4.11.0",
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.6"
   },
   "files": [
     "bin",
     "dist",
-    "_devops_scripts"
+    "bash-script-utilities"
   ]
 }

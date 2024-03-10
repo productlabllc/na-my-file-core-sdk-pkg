@@ -2,11 +2,24 @@ import { APIGatewayProxyEventV2 } from 'aws-lambda';
 import { Schema } from 'joi';
 import * as swaggerTypes from './swagger-specification-types';
 
+export type NycIdJwtType = {
+  nycExtTOUVersion: string;
+  mail: string;
+  scope: Array<string>;
+  nycExtEmailValidationFlag: boolean;
+  GUID: string;
+  userType: string;
+  exp: number;
+  jti: string;
+};
+
 export type ConfigRouteEntry = {
+  functionName?: string;
   description: string;
+  swaggerMethodName?: string,
   path: string;
   method: 'ANY' | 'DELETE' | 'GET' | 'HEAD' | 'OPTIONS' | 'PATCH' | 'POST' | 'PUT';
-  generateOpenApiDocs?: boolean,
+  generateOpenApiDocs: boolean,
   handlerPath: string;
   authorizeRoute?: boolean;
 };
@@ -29,8 +42,8 @@ export interface RouteSchema {
   params?: { [key: string]: Schema<any> };
   query?: { [key: string]: Schema<any> };
   form?: { [key: string]: Schema<any> };
-  requestBody?: { [key: string]: Schema<any> };
-  responseBody?: { [key: string]: Schema<any> } | Schema<any>;
+  requestBody?: Schema<any> | { [key: string]: Schema<any> };
+  responseBody?: Schema<any> | { [key: string]: Schema<any> };
 }
 
 export interface BaseResponseObject extends swaggerTypes.ResponseObject {}

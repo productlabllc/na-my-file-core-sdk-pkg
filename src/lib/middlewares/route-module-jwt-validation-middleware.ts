@@ -11,17 +11,11 @@ export const jwtValidationMiddleware = (incomingData: RouteArguments): RouteArgu
   const tokenString = authHeader!.replace('Bearer ', '');
   const jwt = parseJwt(tokenString);
   console.log(`Decoded token: ${JSON.stringify(jwt)}`);
-  if (!jwt) {
+  if (!jwt || !(jwt.mail && jwt.nycExtEmailValidationFlag)) {
     throw new CustomError('Token not valid.', 401);
   }
-  if (!jwt.email_verified) {
-    throw new CustomError('Email for this account has not been verified.', 401);
-  }
-  if ((jwt.exp * 1000) < Date.now()) {
-    throw new CustomError('Session token is expired.', 403);
-  }
-  if (!jwt || !(jwt.email && jwt.email_verified)) {
-    throw new CustomError('Token not valid.', 401);
+  if(new Date().getTime() >= jwt.exp*1000) {
+    throw new CustomError("Token expired", 401)
   }
   routeData.jwt = jwt;
   return { ...incomingData, routeData };
