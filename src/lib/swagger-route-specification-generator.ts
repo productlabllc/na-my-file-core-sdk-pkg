@@ -17,10 +17,10 @@ type RouteSpecType = {
 };
 
 export const generateRouteSwaggerSpec = (schema: RouteSchema, routeEntry: ConfigRouteEntry): RouteSpecType => {
-  const { requestBody: requestBodyJoiSchema, query: queryJoiSchema, params: pathParamsJoiSchema, responseBody: responseBodyJoiSchema } = schema;
+  const { requestBody: requestBodyJoiSchema, query: queryJoiSchema, params: pathParamsJoiSchema, responseBody: responseBodyJoiSchema } = { requestBody: {}, query: {}, params: {}, responseBody: {}, ...schema };
   const { description, swaggerMethodName } = routeEntry;
-  console.log('schema:')
-  console.log(schema);
+  // console.log('schema:')
+  // console.log(schema);
   let parameters: Array<swaggerTypes.ParameterObject> = [];
   let requestBody: swaggerTypes.RequestBody | undefined = undefined;
   let responseBody: swaggerTypes.ResponseObject = { description: 'Default response' };
@@ -63,7 +63,7 @@ export const generateRouteSwaggerSpec = (schema: RouteSchema, routeEntry: Config
       },
     };
     // console.log(swagger);
-    if (swagger.$ref) {
+    if (swagger.$ref || (swagger.items && swagger.items.$ref)) {
       // requestBodyRefKey = swagger.$ref.split('/').reverse()[0];
       componentSchemas = { ...componentSchemas, ...requestComponent!.schemas };
     }
@@ -82,7 +82,7 @@ export const generateRouteSwaggerSpec = (schema: RouteSchema, routeEntry: Config
         },
       },
     };
-    if (swagger.$ref) {
+    if (swagger.$ref || (swagger.items && swagger.items.$ref)) {
       // responseBodyRefKey = swagger.$ref.split('/').reverse()[0];
       componentSchemas = { ...componentSchemas, ...responseComponent!.schemas };
     }
