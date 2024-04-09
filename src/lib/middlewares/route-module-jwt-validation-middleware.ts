@@ -11,7 +11,7 @@ export const jwtValidationMiddleware = (incomingData: RouteArguments): RouteArgu
   const tokenString = authHeader!.replace('Bearer ', '');
   const jwt = parseJwt(tokenString);
   console.log(`Decoded token: ${JSON.stringify(jwt)}`);
-  if (!jwt || !(jwt.mail && jwt.nycExtEmailValidationFlag)) {
+  if (!jwt || !(jwt.email && jwt.nycExtEmailValidationFlag)) {
     throw new CustomError('Token not valid.', 401);
   }
   if(new Date().getTime() >= jwt.exp*1000) {

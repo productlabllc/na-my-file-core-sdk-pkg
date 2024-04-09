@@ -3,14 +3,24 @@ import { Schema } from 'joi';
 import * as swaggerTypes from './swagger-specification-types';
 
 export type NycIdJwtType = {
-  nycExtTOUVersion: string;
-  mail: string;
-  scope: Array<string>;
-  nycExtEmailValidationFlag: boolean;
-  GUID: string;
-  userType: string;
+  iss: string;
   exp: number;
-  jti: string;
+  iat: number;
+  aud: string;
+  auth_time: number;
+  azp: string;
+  sub: string;
+  name: string;
+  family_name: string;
+  given_name: string;
+  email: string;
+  uid: string;
+  userType: string;
+  GUID: string;
+  nycExtEmailValidationFlag: boolean;
+  nycExtTOUVersion: string;
+  address: object;
+  at_hash: string;
 };
 
 export type ConfigRouteEntry = {

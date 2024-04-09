@@ -1,0 +1,2934 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "My File NYC",
+    "description": "This api represents a combination of all API Gateway Lambda Proxy components for My File NYC.",
+    "contact": {
+      "email": "wereid@nycopportunity.nyc.gov"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://dkvtc4ni4i.execute-api.us-east-1.amazonaws.com/",
+      "description": "My File NYC API (dev)"
+    }
+  ],
+  "tags": [
+    "users"
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+
+  "paths": {
+    "/languages": {
+      "get": {
+        "description": "Get myfile languages",
+        "operationId": "getLanguages",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Language"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/cases/{caseId}/files": {
+      "post": {
+        "description": "Add case files",
+        "operationId": "addCaseFiles",
+        "parameters": [
+          {
+            "name": "caseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddCaseFileRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      },
+      "delete": {
+        "description": "Delete case files",
+        "operationId": "deleteCaseFiles",
+        "parameters": [
+          {
+            "name": "caseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteCaseFileRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      },
+      "get": {
+        "description": "Get case files",
+        "operationId": "getCaseFileListing",
+        "parameters": [
+          {
+            "name": "caseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/cases/files/{id}": {
+      "patch": {
+        "description": "Update case file",
+        "operationId": "updateCaseFile",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCaseFileRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/users/{userId}/files": {
+      "get": {
+        "description": "Get user files.",
+        "operationId": "getUserFiles",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserFilesResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/users/files": {
+      "post": {
+        "description": "Create user file.",
+        "operationId": "createUserFile",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserFileRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateUserFileRequest"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      },
+      "patch": {
+        "description": "Update user file.",
+        "operationId": "updateUserFile",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFamilyMemberRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateFamilyMemberResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      },
+      "delete": {
+        "description": "Delete user file.",
+        "operationId": "deleteUserFile",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteUserFileRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/users/{userId}/files/family-member": {
+      "get": {
+        "description": "Get user family member files.",
+        "operationId": "getUserFamilyMemberFiles",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "userFamilyMemberId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserFilesResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/users/files/download": {
+      "get": {
+        "description": "Get download url for user file.",
+        "operationId": "getUserFileDownloadUrl",
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "uploadVersionId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserFileDownloadResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/users/files/{fileId}/cases": {
+      "get": {
+        "description": "Get cases for user file.",
+        "operationId": "getUserFileCases",
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserFileCasesResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/users/files/generated": {
+      "patch": {
+        "description": "Update generated file",
+        "operationId": "updateGeneratedFile",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGeneratedFileRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateGeneratedFileResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/users/files/generated/download": {
+      "get": {
+        "description": "Get generated file download url",
+        "operationId": "getGeneratedFileDownloadUrl",
+        "parameters": [
+          {
+            "name": "generatedFileId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserFileDownloadResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/users/workflows": {
+      "post": {
+        "description": "Add user workflow",
+        "operationId": "addUserWorkflow",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddWorkFlowRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddWorkFlowResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      },
+      "delete": {
+        "description": "Remove user workflow",
+        "operationId": "removeUserWorkflow",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteWorkFlowRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteWorkFlowResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      },
+      "get": {
+        "description": "Get user workflows",
+        "operationId": "getUserWorkflows",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserWorkFlowsResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/workflows": {
+      "get": {
+        "description": "Get myfile workflows",
+        "operationId": "getWorkflows",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Workflow"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/user/family": {
+      "post": {
+        "description": "Create a user family member",
+        "operationId": "createUserFamilyMember",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFamilyMemberRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateFamilyMemberResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      },
+      "patch": {
+        "description": "Update user family member",
+        "operationId": "updateUserFamilyMember",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFamilyMemberRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateFamilyMemberResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      },
+      "delete": {
+        "description": "Delete user family members",
+        "operationId": "deleteFamilyMember",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteFamilyMemberRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteFamilyMemberResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      },
+      "get": {
+        "description": "Get user family members",
+        "operationId": "getFamilyMembers",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FamilyMember"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/user/family/{id}": {
+      "get": {
+        "description": "Get user family member",
+        "operationId": "getFamilyMember",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FamilyMember"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/case/{caseId}/family-members": {
+      "post": {
+        "description": "Add case family members",
+        "operationId": "addCaseFamilyMembers",
+        "parameters": [
+          {
+            "name": "caseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddCaseFamilyMembersRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddCaseApplicantsResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      },
+      "delete": {
+        "description": "Delete case family members",
+        "operationId": "deleteCaseFamilyMembers",
+        "parameters": [
+          {
+            "name": "caseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteCaseFamilyMembersRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      },
+      "get": {
+        "description": "Get case family members",
+        "operationId": "getCaseFamilyMembers",
+        "parameters": [
+          {
+            "name": "caseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CaseApplicant"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/cases": {
+      "post": {
+        "description": "Create a new case",
+        "operationId": "createCase",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCaseRequestBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCaseResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      },
+      "get": {
+        "description": "Get user cases",
+        "operationId": "getCases",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCaseResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/cases/{caseId}": {
+      "patch": {
+        "description": "Update a case",
+        "operationId": "updateCase",
+        "parameters": [
+          {
+            "name": "caseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCaseRequestBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateCaseResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      },
+      "delete": {
+        "description": "Delete a case",
+        "operationId": "deleteCase",
+        "parameters": [
+          {
+            "name": "caseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      },
+      "get": {
+        "description": "Get a single case",
+        "operationId": "getCase",
+        "parameters": [
+          {
+            "name": "caseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCaseResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/users": {
+      "post": {
+        "description": "Create user.",
+        "operationId": "createUser",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateUserResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      },
+      "get": {
+        "description": "Get NYCID user data",
+        "operationId": "getUser",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      },
+      "patch": {
+        "description": "Update user.",
+        "operationId": "updateUser",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateUserResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      },
+      "delete": {
+        "description": "Delete user",
+        "operationId": "deleteUser",
+        "parameters": [],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/users/activities": {
+      "get": {
+        "description": "Get user activity.",
+        "operationId": "getUserActivity",
+        "parameters": [
+          {
+            "name": "filters",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fromDate": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "toDate": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "required": [
+                "fromDate",
+                "toDate"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "float",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "float",
+              "minimum": 10
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserActivityResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    },
+    "/messaging/post-message-to-ws-connections": {
+      "post": {
+        "description": "Post message to connections",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Default response body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default response body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          ""
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Language": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Code": {
+            "type": "string"
+          },
+          "CreatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "Name",
+          "Code",
+          "CreatedAt"
+        ],
+        "additionalProperties": false
+      },
+      "AddCaseFileRequest": {
+        "type": "object",
+        "properties": {
+          "UserFileIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        },
+        "required": [
+          "UserFileIds"
+        ],
+        "additionalProperties": false
+      },
+      "DeleteCaseFileRequest": {
+        "type": "object",
+        "properties": {
+          "UserFileIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        },
+        "required": [
+          "UserFileIds"
+        ],
+        "additionalProperties": false
+      },
+      "UpdateCaseFileRequest": {
+        "type": "object",
+        "properties": {
+          "Status": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "Status"
+        ],
+        "additionalProperties": false
+      },
+      "UserFile": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "LegacyId": {
+            "type": "string"
+          },
+          "ContentType": {
+            "type": "string"
+          },
+          "ActiveVersionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "OriginalFilename": {
+            "type": "string"
+          },
+          "Title": {
+            "type": "string"
+          },
+          "CreatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "LastModifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "OwnerUserId": {
+            "type": "string"
+          },
+          "UploadedMediaAssetVersions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": false
+            }
+          },
+          "UploadUrls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "CreatedByUserId": {
+            "type": "string"
+          },
+          "LastModifiedByUserId": {
+            "type": "string",
+            "format": "email"
+          },
+          "UploadUrl": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "ContentType",
+          "OriginalFilename",
+          "Title"
+        ],
+        "additionalProperties": false
+      },
+      "GetUserFilesResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/UserFile"
+        }
+      },
+      "CreateUserFileRequest": {
+        "type": "object",
+        "properties": {
+          "UserFamilyMemberId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Title": {
+            "type": "string"
+          },
+          "Files": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ContentType": {
+                  "type": "string"
+                },
+                "OriginalFilename": {
+                  "type": "string"
+                },
+                "SizeInBytes": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "PageNumber": {
+                  "type": "number",
+                  "format": "float"
+                }
+              },
+              "required": [
+                "ContentType",
+                "OriginalFilename",
+                "SizeInBytes",
+                "PageNumber"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "Title",
+          "Files"
+        ],
+        "additionalProperties": false
+      },
+      "UpdateFamilyMemberRequest": {
+        "type": "object",
+        "properties": {
+          "FirstName": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "Dob": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Relationship": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "FirstName": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string",
+            "format": "email"
+          },
+          "LegacyId": {
+            "type": "string"
+          },
+          "IdpId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CaseApplicant": {
+        "type": "object",
+        "properties": {
+          "CaseId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "UserFamilyMemberId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "UserFamilyMember": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          },
+          "Case": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateFamilyMemberResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "FirstName": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "UserId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "DOB": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Relationship": {
+            "type": "string"
+          },
+          "User": {
+            "$ref": "#/components/schemas/User"
+          },
+          "CaseApplicants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseApplicant"
+            }
+          },
+          "UserFiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserFile"
+            }
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "DeleteUserFileRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "UserFileDownloadResponse": {
+        "type": "object",
+        "properties": {
+          "downloadUrl": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CaseAttributes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "value"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "CaseCriterion": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Status": {
+            "type": "string"
+          },
+          "LastModifiedByUserId": {
+            "type": "string"
+          },
+          "CaseId": {
+            "type": "string"
+          },
+          "UserId": {
+            "type": "string"
+          },
+          "WorkflowStageCriterionId": {
+            "type": "string"
+          },
+          "LastModifiedByUser": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          },
+          "Case": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          },
+          "WorkflowStageCriterion": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "CaseNote": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "NoteText": {
+            "type": "string"
+          },
+          "ParentNoteId": {
+            "type": "string"
+          },
+          "AuthorUserId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "NoteAudienceScope": {
+            "type": "string"
+          },
+          "AuthorUser": {
+            "$ref": "#/components/schemas/User"
+          },
+          "CaseId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "CaseNoteReplies": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": false
+            }
+          },
+          "CaseNote": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "CaseTeamAssignment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "UserId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "CaseId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "CaseRole": {
+            "type": "string"
+          },
+          "Case": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          },
+          "User": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "CaseFile": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "UserFileId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "CreatedByUserId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "CaseId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Case": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          },
+          "UserFile": {
+            "$ref": "#/components/schemas/UserFile"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "Case": {
+        "type": "object",
+        "properties": {
+          "Title": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "CaseType": {
+            "type": "string"
+          },
+          "PercentComplete": {
+            "type": "number",
+            "format": "float"
+          },
+          "AgencyCaseIdentifier": {
+            "type": "string"
+          },
+          "CaseAttributes": {
+            "$ref": "#/components/schemas/CaseAttributes"
+          },
+          "CaseCriteria": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseCriterion"
+            }
+          },
+          "CaseNotes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseNote"
+            }
+          },
+          "CaseTeamAssignments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseTeamAssignment"
+            }
+          },
+          "CaseFiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseFile"
+            }
+          },
+          "CaseApplicants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseApplicant"
+            }
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "GetUserFileCasesResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Case"
+        }
+      },
+      "UpdateGeneratedFileRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ContentType": {
+            "type": "string"
+          },
+          "OriginalFilename": {
+            "type": "string"
+          },
+          "Status": {
+            "type": "string"
+          },
+          "SizeInBytes": {
+            "type": "number",
+            "format": "float"
+          },
+          "Title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "UpdateGeneratedFileResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ContentType": {
+            "type": "string"
+          },
+          "OriginalFilename": {
+            "type": "string"
+          },
+          "Status": {
+            "type": "string"
+          },
+          "SizeInBytes": {
+            "type": "number",
+            "format": "float"
+          },
+          "CreatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "LastModifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "AddWorkFlowRequest": {
+        "type": "object",
+        "properties": {
+          "WorkflowId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "WorkflowId"
+        ],
+        "additionalProperties": false
+      },
+      "AddWorkFlowResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "FirstName": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string",
+            "format": "email"
+          },
+          "LegacyId": {
+            "type": "string"
+          },
+          "IdpId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeleteWorkFlowRequest": {
+        "type": "object",
+        "properties": {
+          "WorkflowId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "WorkflowId"
+        ],
+        "additionalProperties": false
+      },
+      "DeleteWorkFlowResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "FirstName": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string",
+            "format": "email"
+          },
+          "LegacyId": {
+            "type": "string"
+          },
+          "IdpId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WorkflowStageCriterion": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "CaseWorkflowStageId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "CaseCriteria": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": false
+            }
+          },
+          "CriterionFulfillmentType": {
+            "type": "string"
+          },
+          "WorkflowStage": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "WorkflowStage": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "StageName": {
+            "type": "string"
+          },
+          "WorkflowId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Workflow": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          },
+          "WorkflowStateCriteria": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowStageCriterion"
+            }
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "Workflow": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "WorkflowStages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkflowStage"
+            }
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "GetUserWorkFlowsResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Workflow"
+        }
+      },
+      "CreateFamilyMemberRequest": {
+        "type": "object",
+        "properties": {
+          "FirstName": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "DOB": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Relationship": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "FirstName",
+          "LastName",
+          "DOB",
+          "Relationship"
+        ],
+        "additionalProperties": false
+      },
+      "CreateFamilyMemberResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "FirstName": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "UserId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "DOB": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Relationship": {
+            "type": "string"
+          },
+          "User": {
+            "$ref": "#/components/schemas/User"
+          },
+          "CaseApplicants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseApplicant"
+            }
+          },
+          "UserFiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserFile"
+            }
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "DeleteFamilyMemberRequest": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "FamilyMember": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "FirstName": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "UserId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "DOB": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Relationship": {
+            "type": "string"
+          },
+          "User": {
+            "$ref": "#/components/schemas/User"
+          },
+          "CaseApplicants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseApplicant"
+            }
+          },
+          "UserFiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserFile"
+            }
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "DeleteFamilyMemberResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/FamilyMember"
+        }
+      },
+      "AddCaseFamilyMembersRequest": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "UserFamilyMemberId": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "UserFamilyMemberId"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "AddCaseApplicantsResponse": {
+        "type": "object",
+        "properties": {
+          "CaseId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "UserFamilyMemberId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "UserFamilyMember": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          },
+          "Case": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeleteCaseFamilyMembersRequest": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "UserFamilyMemberId": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "UserFamilyMemberId"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "CreateCaseRequestBody": {
+        "type": "object",
+        "properties": {
+          "CaseTitle": {
+            "type": "string"
+          },
+          "CaseType": {
+            "type": "string"
+          },
+          "CaseAttributes": {
+            "$ref": "#/components/schemas/CaseAttributes"
+          },
+          "CaseIdentifier": {
+            "type": "string"
+          },
+          "FamilyMemberIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "WorkflowId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "CaseType",
+          "CaseIdentifier",
+          "WorkflowId"
+        ],
+        "additionalProperties": false
+      },
+      "CreateCaseResponse": {
+        "type": "object",
+        "properties": {
+          "Title": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "CaseType": {
+            "type": "string"
+          },
+          "PercentComplete": {
+            "type": "number",
+            "format": "float"
+          },
+          "AgencyCaseIdentifier": {
+            "type": "string"
+          },
+          "CaseAttributes": {
+            "$ref": "#/components/schemas/CaseAttributes"
+          },
+          "CaseCriteria": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseCriterion"
+            }
+          },
+          "CaseNotes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseNote"
+            }
+          },
+          "CaseTeamAssignments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseTeamAssignment"
+            }
+          },
+          "CaseFiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseFile"
+            }
+          },
+          "CaseApplicants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseApplicant"
+            }
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "UpdateCaseRequestBody": {
+        "type": "object",
+        "properties": {
+          "CaseTitle": {
+            "type": "string"
+          },
+          "CaseType": {
+            "type": "string"
+          },
+          "PercentComplete": {
+            "type": "number",
+            "format": "float"
+          },
+          "CaseAttributes": {
+            "$ref": "#/components/schemas/CaseAttributes"
+          },
+          "Status": {
+            "type": "string"
+          },
+          "AgencyCaseIdentifier": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateCaseResponse": {
+        "type": "object",
+        "properties": {
+          "Title": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "CaseType": {
+            "type": "string"
+          },
+          "PercentComplete": {
+            "type": "number",
+            "format": "float"
+          },
+          "AgencyCaseIdentifier": {
+            "type": "string"
+          },
+          "CaseAttributes": {
+            "$ref": "#/components/schemas/CaseAttributes"
+          },
+          "CaseCriteria": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseCriterion"
+            }
+          },
+          "CaseNotes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseNote"
+            }
+          },
+          "CaseTeamAssignments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseTeamAssignment"
+            }
+          },
+          "CaseFiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseFile"
+            }
+          },
+          "CaseApplicants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseApplicant"
+            }
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "GetCaseResponse": {
+        "type": "object",
+        "properties": {
+          "Title": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "CaseType": {
+            "type": "string"
+          },
+          "PercentComplete": {
+            "type": "number",
+            "format": "float"
+          },
+          "AgencyCaseIdentifier": {
+            "type": "string"
+          },
+          "CaseAttributes": {
+            "$ref": "#/components/schemas/CaseAttributes"
+          },
+          "CaseCriteria": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseCriterion"
+            }
+          },
+          "CaseNotes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseNote"
+            }
+          },
+          "CaseTeamAssignments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseTeamAssignment"
+            }
+          },
+          "CaseFiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseFile"
+            }
+          },
+          "CaseApplicants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseApplicant"
+            }
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "getCaseResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Case"
+        }
+      },
+      "CreateUserRequest": {
+        "type": "object",
+        "properties": {
+          "FirstName": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string",
+            "format": "email"
+          },
+          "DOB": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "LanguageId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Workflows": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        },
+        "required": [
+          "FirstName",
+          "LastName",
+          "Email",
+          "DOB",
+          "LanguageId"
+        ],
+        "additionalProperties": false
+      },
+      "CreateUserResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "FirstName": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string",
+            "format": "email"
+          },
+          "LegacyId": {
+            "type": "string"
+          },
+          "IdpId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateUserRequest": {
+        "type": "object",
+        "properties": {
+          "FirstName": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string",
+            "format": "email"
+          },
+          "DOB": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "LanguageId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "TOSAcceptedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "PPAcceptedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateUserResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "FirstName": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string",
+            "format": "email"
+          },
+          "LegacyId": {
+            "type": "string"
+          },
+          "IdpId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PlatformActivityLogs": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ActivityType": {
+            "type": "string"
+          },
+          "ActivityValue": {
+            "type": "string"
+          },
+          "RelatedId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "CreatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ActivityGeneratedByUserId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Metadata": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          },
+          "User": {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "GetUserActivityResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlatformActivityLogs"
+            }
+          },
+          "total": {
+            "type": "number",
+            "format": "float"
+          },
+          "page": {
+            "type": "number",
+            "format": "float"
+          },
+          "limit": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
